@@ -147,13 +147,12 @@ public class NetworkUtils {
     }
 
     //For testing
-    public static void main(String[] args) throws URISyntaxException, IOException {
+    public static void main(String[] args) {
 //        System.out.println(generateURL("dsfdf"));
 
-//        URL url = NetworkUtils.generateURL("Hamlet", "30");
-//        String resultBooks = NetworkUtils.getResponseFromURL(url);
-//        ArrayList<Book> bks = parseJSONBooks(resultBooks);
-//        System.out.println(bks);
-
+        URL url = NetworkUtils.generateURL("Hamlet", "30");
+        String resultBooks = NetworkUtils.getResponseFromURL(url);
+        ArrayList<Book> bks = parseJSONBooks(resultBooks);
+        System.out.println(bks);
     }
 }
