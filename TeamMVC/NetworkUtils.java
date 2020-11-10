@@ -23,7 +23,7 @@ public class NetworkUtils {
     private static final String PARAM_VOLUME_NAME = "q";
     private static final String PARAM_FIELDS = "fields";
     private static final String PARAM_START_INDEX = "startIndex";
-    private static final String VAL_FIELDS = "kind,items(volumeInfo(title,authors,publisher,publishedDate,imageLinks,description))";
+    private static final String VAL_FIELDS = "kind,totalItems,items(volumeInfo(title,authors,publisher,publishedDate,imageLinks,description))";
     private static final String ACCESS_KEY = "key";
 
 
