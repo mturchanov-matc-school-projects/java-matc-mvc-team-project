@@ -12,20 +12,29 @@ public class Book {
     private String publisher;
     private String publishedDate;
     private String imageThumbnail;
+    private int totalItems;
 
     public Book() {
         books = new ArrayList<>();
     }//asdsdddd
 
-    public Book(String title, String[] authors, String description, String publisher,
-                String publishedDate, String imageThumbnail) {
-        books = new ArrayList<>();
+ public int getTotalItems() {
+        return totalItems;
+    }
+
+    public void setTotalItems(int totalItems) {
+        this.totalItems = totalItems;
+    }
+
+    public Book(String title, String authors, String description, String publisher,
+                String publishedDate, String imageThumbnail, int totalItems) {
         this.title = title;
         this.authors = authors;
         this.publisher = publisher;
         this.description = description;
         this.publishedDate = publishedDate;
         this.imageThumbnail = imageThumbnail;
+        this.totalItems = totalItems;
     }
 
 
