@@ -5,9 +5,8 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Book {
-    private List<Book> books;
     private String title;
-    private String[] authors;
+    private String authors;
     private String description;
     private String publisher;
     private String publishedDate;
@@ -15,8 +14,7 @@ public class Book {
     private int totalItems;
 
     public Book() {
-        books = new ArrayList<>();
-    }//asdsdddd
+    }
 
  public int getTotalItems() {
         return totalItems;
@@ -37,15 +35,6 @@ public class Book {
         this.totalItems = totalItems;
     }
 
-
-    public List<Book> getBooks() {
-        return books;
-    }
-
-    public void setBooks(List<Book> books) {
-        this.books = books;
-    }
-
     public String getTitle() {
         return title;
     }
@@ -54,11 +43,11 @@ public class Book {
         this.title = title;
     }
 
-    public String[] getAuthors() {
+    public String getAuthors() {
         return authors;
     }
 
-    public void setAuthors(String[] authors) {
+    public void setAuthors(String authors) {
         this.authors = authors;
     }
 
@@ -99,7 +88,7 @@ public class Book {
         return "Book{" +
                 "books=" + books +
                 ", title='" + title + '\'' +
-                ", authors=" + Arrays.toString(authors) +
+                ", authors=" + authors +
                 ", description='" + description + '\'' +
                 ", publisher='" + publisher + '\'' +
                 ", publishedDate='" + publishedDate + '\'' +
