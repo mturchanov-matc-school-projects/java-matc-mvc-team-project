@@ -12,8 +12,8 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 
 @WebServlet(
-        name = "BooksServlet",
-        urlPatterns = { "/books" }
+    name = "BooksServlet",
+    urlPatterns = { "/books" }
 )
 public class BooksServlet extends HttpServlet {
 
@@ -33,12 +33,13 @@ public class BooksServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        urlResult = NetworkUtils.getResponseFromURL(NetworkUtils.generateURL(request.getParameter("title"), "0"));
-        books = NetworkUtils.parseJSONBooks(urlResult);
-        request.setAttribute("books", books);
+            urlResult = NetworkUtils.getResponseFromURL(NetworkUtils.generateURL(request.getParameter("title"), "0"));
+            books = NetworkUtils.parseJSONBooks(urlResult);
+             request.setAttribute("books", books);
 
         RequestDispatcher dispatcher = request
-                .getRequestDispatcher("/MVC_Test_Output.jsp");
-        dispatcher.forward(request, response);
-    }
-}
+                        .getRequestDispatcher("/MVC_Test_Output.jsp");
+                dispatcher.forward(request, response);
+            }
+        }
+
