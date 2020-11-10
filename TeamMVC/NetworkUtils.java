@@ -123,9 +123,9 @@ public class NetworkUtils {
                 JSONObject bookJSON = items.getJSONObject(i).getJSONObject("volumeInfo");
                 String title = bookJSON.getString("title");
 
-                String[] authors = bookJSON.has("authors")
-                        ? bookJSON.getJSONArray("authors").toString().split(",")
-                        : new String[]{"no authors"};
+                String authors = bookJSON.has("authors")
+                        ? bookJSON.getJSONArray("authors").toString().replaceAll("[\\[\\]\"]", "")
+                        : "no authors";
                 String publisher = bookJSON.has("publisher")
                         ? bookJSON.getString("publisher")
                         : "no publisher";
