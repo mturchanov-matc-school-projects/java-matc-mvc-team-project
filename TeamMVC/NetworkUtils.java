@@ -131,7 +131,9 @@ public class NetworkUtils {
                 String description = bookJSON.has("description")
                         ? bookJSON.getString("description")
                         : "no description";
-                String publishedDate = bookJSON.getString("publishedDate");
+                String publishedDate = bookJSON.has("publishedDate")
+                        ? bookJSON.getString("publishedDate")
+                        : "no description";
                 String imageThumbnail = bookJSON.getJSONObject("imageLinks").getString("smallThumbnail");
 
                 Book book = new Book(title, authors, description, publisher, publishedDate, imageThumbnail);
