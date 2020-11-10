@@ -117,6 +117,7 @@ public class NetworkUtils {
         try {
             JSONObject obj = new JSONObject(booksString);
             JSONArray items = obj.getJSONArray("items");
+             int totalItems = obj.getInt("totalItems");
 
             for (int i = 0; i < items.length(); i++) {
                 JSONObject bookJSON = items.getJSONObject(i).getJSONObject("volumeInfo");
@@ -136,7 +137,7 @@ public class NetworkUtils {
                         : "no description";
                 String imageThumbnail = bookJSON.getJSONObject("imageLinks").getString("smallThumbnail");
 
-                Book book = new Book(title, authors, description, publisher, publishedDate, imageThumbnail);
+                Book book = new Book(title, authors, description, publisher, publishedDate, imageThumbnail, totalItems);
                 books.add(book);
                 System.out.println(book);
             }
