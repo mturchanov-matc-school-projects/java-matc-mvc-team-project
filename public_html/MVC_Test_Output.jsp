@@ -6,13 +6,7 @@
     <title>MVC Test</title>
 </head>
 <body>
-<%@ taglib prefix="a" uri="http://java.sun.com/jsp/jstl/core" %>
-
-<a:forEach items="${books}" var="book">
-    <div>
-        <p><a:out value="${book.title} - ${book.publisher}"/></p>
-    </div>
-</a:forEach>
+<p>${books}</p>
 
 </body>
 

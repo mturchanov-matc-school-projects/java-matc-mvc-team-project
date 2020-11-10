@@ -40,10 +40,10 @@
     <h1 class="w3-margin w3-jumbo">Book Browser</h1>
 
     <p class="w3-xlarge">Team Hopper</p>
-    <form method="GET" action="/java112/testServlet">
+    <form method="GET" action="/java112/books">
 
-        <label for="bookTitle">Enter a book title:</label>
-        <input type="text" name="bookTitle">
+        <label for="title">Enter a book title:</label>
+        <input type="text" name="title">
 
         <input type="submit" name="submit" value="Search" class="w3-button w3-black w3-padding-large w3-large w3-margin-top">
     </form>
