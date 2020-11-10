@@ -35,20 +35,32 @@ public class NetworkUtils {
      * @return  formatted get url
      * @throws URISyntaxException uri syntax exception
      */
-    public static URL generateURL(String volumeToSearch, String startIndex) throws MalformedURLException, URISyntaxException {
+    public static URL generateURL(String volumeToSearch, String startIndex) {
         String url = GOOGLE_BOOKS_BASE_URL + GOOGLE_API_NAME + BOOK_SEARCH_TYPE;
         HashMap<String, String> params = new HashMap<>();
         params.put(PARAM_VOLUME_NAME, volumeToSearch);
         params.put(PARAM_FIELDS, VAL_FIELDS);
         params.put(PARAM_START_INDEX, startIndex);
         params.put(ACCESS_KEY, "AIzaSyDhPrw23cOfJIzVgzDjsfKbjPgGxP3jH2E");
-        return new URL(appendToUrl(url, params));
+        URL resultURL = null;
+        try {
+            resultURL = new URL(appendToUrl(url, params));
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        return resultURL;
     }
 
-//    https://stackoverflow.com/questions/26177749/how-can-i-append-a-query-parameter-to-an-existing-url
-    private static String appendToUrl(String url, HashMap<String, String> params) throws URISyntaxException
+    //    https://stackoverflow.com/questions/26177749/how-can-i-append-a-query-parameter-to-an-existing-url
+    private static String appendToUrl(String url, HashMap<String, String> params)
     {
-        URI uri = new URI(url);
+        URI uri = null;
+        try {
+            uri = new URI(url);
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
+
         String query = uri.getQuery();
         StringBuilder builder = new StringBuilder();
         if (query != null)
@@ -60,7 +72,13 @@ public class NetworkUtils {
                 builder.append("&");
             builder.append(keyValueParam);
         }
-        URI formattedURI = new URI(uri.getScheme(), uri.getAuthority(), uri.getPath(), builder.toString(), uri.getFragment());
+        URI formattedURI = null;
+
+        try {
+            formattedURI = new URI(uri.getScheme(), uri.getAuthority(), uri.getPath(), builder.toString(), uri.getFragment());
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
         return formattedURI.toString();
     }
 
@@ -71,9 +89,10 @@ public class NetworkUtils {
      * @return string json of books' data
      * @throws IOException ioEceptyion
      */
-    public static String getResponseFromURL(URL url) throws  IOException {
-        HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+    public static String getResponseFromURL(URL url) {
+        HttpURLConnection urlConnection = null;
         try {
+            urlConnection = (HttpURLConnection) url.openConnection();
             InputStream in = urlConnection.getInputStream(); //open input stream on url
             Scanner scanner = new Scanner(in);
             scanner.useDelimiter("\\A"); //split on starting of line; will return the whole line
@@ -83,45 +102,58 @@ public class NetworkUtils {
             } else {
                 return null;
             }
-        } catch (UnknownHostException e) {
-            return null;
+        } catch (IOException e) {
+            e.printStackTrace();
         } finally {
             urlConnection.disconnect();
         }
+        return null;
     }
 
 
-    public static ArrayList<Book> parseJSONBooks(String booksString) throws JSONException {
+    public static ArrayList<Book> parseJSONBooks(String booksString) {
+
         ArrayList<Book> books = new ArrayList<>();
-        JSONObject obj = new JSONObject(booksString);
-        JSONArray items = obj.getJSONArray("items");
-        for (int i = 0; i < items.length(); i++) {
-            JSONObject bookJSON = items.getJSONObject(i).getJSONObject("volumeInfo");
-            String title = bookJSON.getString("title");
-            String[] authors = bookJSON.has("authors")
-                    ? bookJSON.getJSONArray("authors").toString().split(",")
-                    : new String[]{"no authors"};
-            String publisher = bookJSON.has("publisher")
-                    ? bookJSON.getString("publisher")
-                    : "no publisher";
-            String description = bookJSON.has("description")
-                    ? bookJSON.getString("description")
-                    : "no description";
-            String publishedDate = bookJSON.getString("publishedDate");
-            String imageThumbnail = bookJSON.getJSONObject("imageLinks").getString("smallThumbnail");
-            Book book = new Book(title, authors, description, publisher, publishedDate, imageThumbnail);
-            books.add(book);
+        try {
+            JSONObject obj = new JSONObject(booksString);
+            JSONArray items = obj.getJSONArray("items");
+
+            for (int i = 0; i < items.length(); i++) {
+                JSONObject bookJSON = items.getJSONObject(i).getJSONObject("volumeInfo");
+                String title = bookJSON.getString("title");
+
+                String[] authors = bookJSON.has("authors")
+                        ? bookJSON.getJSONArray("authors").toString().split(",")
+                        : new String[]{"no authors"};
+                String publisher = bookJSON.has("publisher")
+                        ? bookJSON.getString("publisher")
+                        : "no publisher";
+                String description = bookJSON.has("description")
+                        ? bookJSON.getString("description")
+                        : "no description";
+                String publishedDate = bookJSON.getString("publishedDate");
+                String imageThumbnail = bookJSON.getJSONObject("imageLinks").getString("smallThumbnail");
+
+                Book book = new Book(title, authors, description, publisher, publishedDate, imageThumbnail);
+                books.add(book);
+                System.out.println(book);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
+
 
         return books;
     }
 
     //For testing
-    public static void main(String[] args) throws URISyntaxException, IOException, JSONException {
+    public static void main(String[] args) throws URISyntaxException, IOException {
 //        System.out.println(generateURL("dsfdf"));
 
-        String test = NetworkUtils.getResponseFromURL(NetworkUtils.generateURL("Hamlet", "30"));
-        ArrayList<Book> bks = parseJSONBooks(test);
+//        URL url = NetworkUtils.generateURL("Hamlet", "30");
+//        String resultBooks = NetworkUtils.getResponseFromURL(url);
+//        ArrayList<Book> bks = parseJSONBooks(resultBooks);
+//        System.out.println(bks);
 
     }
 }
