@@ -47,7 +47,7 @@
 
         <input type="submit" name="submit" value="Search" class="w3-button w3-black w3-padding-large w3-large w3-margin-top">
     </form>
-    <button class="w3-button w3-black w3-padding-large w3-large w3-margin-top">Get Started</button>
+    
 </header>
 
 <!-- First Grid -->
