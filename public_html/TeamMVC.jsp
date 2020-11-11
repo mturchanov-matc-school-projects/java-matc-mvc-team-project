@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -55,9 +54,16 @@
             <h5 class="w3-padding-32">Members</h5>
 
             <p class="w3-text-grey"><li>Mike Turchanov</li><li>Rob Adams</li><li>Sydney St. Clair</li><li>Walker Hurd</li></p>
+
         </div>
+
     </div>
+
 </div>
+<div class="w3-center">
+    <img src="images/mvcDiagramPNG.png" alt="MVC Diagram">
+</div>
+
 
 <div class="w3-container w3-black w3-center w3-opacity w3-padding-64">
     <h1 class="w3-margin w3-xlarge">Quote of the day: live life</h1>
