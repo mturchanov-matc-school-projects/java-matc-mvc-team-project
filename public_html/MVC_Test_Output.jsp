@@ -23,16 +23,5 @@
 </c:forEach>
 
 
-
-
-
-
-<%--${FlexPagination:test(currentPage, books[0].totalItems, searchVal)}--%>
-
-
-
-
-
-
 </body>
 </html>
