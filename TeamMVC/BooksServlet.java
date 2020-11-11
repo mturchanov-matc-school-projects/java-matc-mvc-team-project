@@ -38,7 +38,7 @@ public class BooksServlet extends HttpServlet {
              request.setAttribute("books", books);
 
         RequestDispatcher dispatcher = request
-                        .getRequestDispatcher("/MVC_Test_Output.jsp");
+                        .getRequestDispatcher("/MVC_Output.jsp");
                 dispatcher.forward(request, response);
             }
         }
