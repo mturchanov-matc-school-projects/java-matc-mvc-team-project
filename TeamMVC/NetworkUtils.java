@@ -125,16 +125,16 @@ public class NetworkUtils {
 
                 String authors = bookJSON.has("authors")
                         ? bookJSON.getJSONArray("authors").toString().replaceAll("[\\[\\]\"]", "")
-                        : "no authors";
+                        : "";
                 String publisher = bookJSON.has("publisher")
                         ? bookJSON.getString("publisher")
-                        : "no publisher";
+                        : "";
                 String description = bookJSON.has("description")
                         ? bookJSON.getString("description")
-                        : "no description";
+                        : "";
                 String publishedDate = bookJSON.has("publishedDate")
                         ? bookJSON.getString("publishedDate")
-                        : "no description";
+                        : "";
                 String imageThumbnail = bookJSON.getJSONObject("imageLinks").getString("smallThumbnail");
 
                 Book book = new Book(title, authors, description, publisher, publishedDate, imageThumbnail, totalItems);
@@ -144,8 +144,6 @@ public class NetworkUtils {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
-
         return books;
     }
 

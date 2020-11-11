@@ -35,8 +35,8 @@
         <li class="media w3-padding w3-container w3-round-large w3-light-gray">
             <img class="mr-3" src="<c:out value="${book.imageThumbnail}" />" alt="" />
             <div class="media-body">
-                <h3 class="mt-0 mb-1"><c:out value="${book.title} - ${book.authors}" /></h3>
-                <h4 class="mt-0 mb-1"><c:out value="${book.publisher} - ${book.publishedDate}" /></h4>
+                <h3 class="mt-0 mb-1"><c:out value="${book.title}  ${book.authors}" /></h3>
+                <h4 class="mt-0 mb-1"><c:out value="${book.publisher}  ${book.publishedDate}" /></h4>
                 <c:out value="${book.description}" />
             </div>
         </li>
