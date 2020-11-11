@@ -32,7 +32,7 @@
 <c:forEach items="${books}" var="book">
     <div class="container">
     <ul class="list-unstyled">
-        <li class="media w3-padding">
+        <li class="media w3-padding w3-container w3-round-large w3-light-gray">
             <img class="mr-3" src="<c:out value="${book.imageThumbnail}" />" alt="" />
             <div class="media-body">
                 <h3 class="mt-0 mb-1"><c:out value="${book.title} - ${book.authors}" /></h3>
