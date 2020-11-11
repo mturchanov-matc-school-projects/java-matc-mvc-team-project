@@ -1,4 +1,3 @@
-<%@ page import="java112.project3.TeamMVC.FlexPagination" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!doctype html>
@@ -15,29 +14,6 @@
 </head>
 <body>
 <h1>Output</h1>
-<nav aria-label="Navigation for countries">
-
-    <%--    <c:if test="${currentPage > 0}">--%>
-    <%--        <a href="${pageContext.request.contextPath}/decrementPageServlet">Prev</a>--%>
-    <%--    </c:if>--%>
-    <%--    ${currentPage}--%>
-
-    <%--        <a href="${pageContext.request.contextPath}/incrementPageServlet">Next</a>--%>
-
-    <c:if test="${currentPage > 0}">
-    <button>
-        <a href="${pageContext.request.contextPath}/testTeamMVCServlet?currentPage=${currentPage - 1}&searchVal=${searchVal}">Prev</a>
-        </c:if>
-
-        <button>
-            <a href="${pageContext.request.contextPath}/testTeamMVCServlet?currentPage=${1+currentPage}&searchVal=${searchVal}">Next</a>
-        </button>
-
-        <ul class="pagination">
-
-        </ul>
-</nav>
-</nav>
 
 
 <c:forEach items="${books}" var="book">
@@ -47,10 +23,7 @@
 </c:forEach>
 
 
-${pages}
 
-
-<c:set var="pages" value='FlexPagination.test(${currentPage}, ${books[0].totalItems}, ${searchVal})'/>
 
 
 
