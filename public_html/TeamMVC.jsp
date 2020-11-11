@@ -16,15 +16,9 @@
 </style>
 <body>
 
-
-
 <!-- Header -->
-<header class="w3-container w3-teal w3-center" style="padding:128px 16px">
-    <h1 class="w3-margin w3-jumbo">Book Browser</h1>
-
-
-
-    
+<header class="w3-container w3-teal w3-center" style="padding:50px 16px">
+    <h2 class="w3-margin w3-jumbo">Book Browser</h2>
 </header>
 
 <!-- First Grid -->
@@ -40,9 +34,7 @@
                 <input type="submit" name="submit" value="Search" class="w3-button w3-black w3-padding-large w3-large w3-margin-top">
             </form>
 
-
         </div>
-
         <div class="w3-third w3-center">
             <i class="fa fa-anchor w3-padding-64 w3-text-teal"></i>
         </div>
@@ -81,18 +73,6 @@
     </div>
     <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
 </footer>
-
-<script>
-    // Used to toggle the menu on small screens when clicking on the menu button
-    function myFunction() {
-        var x = document.getElementById("navDemo");
-        if (x.className.indexOf("w3-show") == -1) {
-            x.className += " w3-show";
-        } else {
-            x.className = x.className.replace(" w3-show", "");
-        }
-    }
-</script>
 
 </body>
 </html>
